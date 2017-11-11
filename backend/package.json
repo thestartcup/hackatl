@@ -1,0 +1,8 @@
+{
+  "name": "startcup-backend",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
