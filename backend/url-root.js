@@ -6,7 +6,8 @@
   // where base is one of [user, org]
   // scheme is one of [tag, search, id]
   // name only relevant in tag and id schemes
-  var serveUrlRoot = (base, scheme, name, response) => {
+  var serveUrlRoot = (url, response) => {
+    [base, scheme, name] = url.path.split('/').slice(2, 4)
     var db = database.load(base)
     if (db) {
       if (scheme == 'tag') {
@@ -26,5 +27,10 @@
     if (db) {
       db.putItem(item)
     }
+  }
+
+  module.exports = {
+    'serveUrlRoot': serveUrlRoot,
+    'putUrlRoot': putUrlRoot
   }
 })();
