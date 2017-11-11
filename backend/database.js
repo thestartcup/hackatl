@@ -16,33 +16,52 @@
 
   const hasTag = (item, tag) => item.tags.indexOf(tag) != -1
 
-  function Database (s) {
+  const recursiveDiff = (old, diff) => {
+    for (const key in diff) {
+      if (typeof(old[key] === 'undefined')) {
+        old[key] = diff[key]
+      } else {
+        recursiveDiff(old[key], diff[key])
+      }
+    }
+  }
+
+  var Database = function Database (s) {
     this.scheme = s
     this.items = []
   }
 
-  Database.prototype.getByTag = (name) => {
+  Database.prototype.getByTag = function (name) {
     return this.items.filter(item => hasTag(item, name))
   }
 
-  Database.prototype.getById = (id) => {
+  Database.prototype.getById = function (id) {
     return this.items.find(item => item.id == id)
   }
 
-  Database.prototype.search = (queryObj) => {
+  Database.prototype.putItem = function (item) {
+    var oldItem = this.getById(item.id)
+    if (typeof(oldItem) === 'undefined') {
+      this.items.push(item)
+    } else {
+      recursiveDiff(oldItem, item)
+    }
+  }
+
+  Database.prototype.search = function (queryObj) {
     // TODO
   }
 
-  Database.prototype.serveTag = (tagName, response) => {
+  Database.prototype.serveTag = function (tagName, response) {
     var queryData = this.getByTag(tagName)
     response.json(queryData)
   }
-  Database.prototype.serveSearch = (queryStr, response) => {
+  Database.prototype.serveSearch = function (queryStr, response) {
     var queryObj = querystring.parse(queryStr)
     var queryData = this.search(queryObj)
     response.json(queryData)
   }
-  Database.prototype.serveId = (id) => {
+  Database.prototype.serveId = function (id) {
     var queryData = this.getById(id)
     response.json(queryData)
   }
