@@ -6,10 +6,7 @@
   // where base is one of [user, org]
   // scheme is one of [tag, search, id]
   // name only relevant in tag and id schemes
-  var parseUrlRoot = (url, response) => {
-    var base, scheme, name
-    [base, scheme, name] = url.pathname.split('/').slice(2, 5)
-
+  var parseUrlRoot = (base, scheme, name, response) => {
     var db = database.load(base)
     if (!db) { return; }
     if (scheme == 'tag') {
