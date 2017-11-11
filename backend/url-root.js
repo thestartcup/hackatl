@@ -15,7 +15,7 @@
     if (scheme == 'tag') {
       db.serveTag(name, response);
     } else if (scheme == 'search') {
-      db.serveSearch(_, response)
+      db.serveSearch(url.query, response)
     } else if (scheme == 'id') {
       db.serveId(name, response)
     } else {
