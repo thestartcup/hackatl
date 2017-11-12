@@ -35,6 +35,10 @@
     this.items = []
   }
 
+  Database.prototype.getAll = function () {
+    return this.items;
+  }
+
   Database.prototype.getByTag = function (name) {
     return this.items.filter(item => hasTag(item, name))
   }
@@ -54,6 +58,11 @@
 
   Database.prototype.search = function (queryObj) {
     // TODO
+  }
+
+  Database.prototype.serveAll = function (response) {
+    var queryData = this.getAll(tagName)
+    response.json(queryData)
   }
 
   Database.prototype.serveTag = function (tagName, response) {

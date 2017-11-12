@@ -16,6 +16,8 @@
         db.serveSearch(query, response)
       } else if (scheme == 'id') {
         db.serveId(name, response)
+      } else if (scheme == 'all') {
+        db.serveAll(response)
       } else {
         db.serveError(response)
       }
