@@ -56,7 +56,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MenuBar items={['Home', 'Marketing', 'Business', 'Graphic Design', 'Programmer', 'Engineer', 'Investor']}/>
+        <MenuBar items={['Home', 'Marketing', 'Business', 'Graphic Design',
+          'Programming', 'Engineering', 'Investment']}/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title"> The Start Cup </h1>
