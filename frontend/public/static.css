@@ -1,9 +1,17 @@
+body {
+
+}
+
 header.main {
   background: #0c6d78;
   width: 100% - 100px;
   height: 80px;
   padding: 10px 50px;
   text-align: left;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Barlow', sans-serif;
+  font-size: 20px;
 }
 
 #logo {
@@ -13,9 +21,34 @@ header.main {
 }
 
 #logo-text {
-  font-family: 'PT Sans', sans-serif;
-  color: white;
-  text-transform: uppercase;
-  font-size: 20px;
   font-weight: 700;
+  width: 100px;
+  float: left;
+}
+
+#motto {
+  font-weight: 300;
+  position: relative;
+}
+
+.main nav {
+  position: relative;
+  top: 25px;
+  font-size: 18px;
+}
+
+.main nav a {
+  margin: 0 40px;
+  text-decoration: none;
+  color: #abc0c6;
+  transition: color 0.2s;
+}
+
+.main nav a:hover {
+  color: white;
+}
+
+.main nav a.active {
+  color: white;
+  font-weight: bold;
 }
