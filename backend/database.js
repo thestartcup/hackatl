@@ -61,9 +61,15 @@
     var queryData = this.search(queryObj)
     response.json(queryData)
   }
-  Database.prototype.serveId = function (id) {
+  Database.prototype.serveId = function (id, response) {
     var queryData = this.getById(id)
     response.json(queryData)
+  }
+
+  Database.prototype.serveError = function (response) {
+    response.status(404).json({
+      'error': 'Not found'
+    })
   }
 
   module.exports = {
