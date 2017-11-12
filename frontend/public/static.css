@@ -1,0 +1,21 @@
+header.main {
+  background: #0c6d78;
+  width: 100% - 100px;
+  height: 80px;
+  padding: 10px 50px;
+  text-align: left;
+}
+
+#logo {
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+}
+
+#logo-text {
+  font-family: 'PT Sans', sans-serif;
+  color: white;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+}
