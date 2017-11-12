@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FileReaderInput from 'react-file-reader-input';
+
 
 var apiRoot = 'http://localhost:8080'
 
 var tagList = [
-{"tag": "Marketing", "ind": "0"},
-{"tag":"Business", "ind": "1"},
-{"tag":"Graphic Design", "ind": "2"},
-{"tag":"Programmer", "ind": "3"},
-{"tag":"Engineer", "ind": "4"},
-{"tag":"Investor", "ind": "5"}
+{"tag": "marketing", "val": "1"},
+{"tag":"business", "val": "2"},
+{"tag":"graphic-design", "val": "3"},
+{"tag":"programming", "val": "4"},
+{"tag":"engineering", "val": "5"},
+{"tag":"investment", "val": "6"}
 
 ]
 
@@ -25,7 +27,10 @@ class MenuBar extends Component {
         // The click handler will update the state with
         // the index of the focused menu entry
 
+        MakeList(apiRoot, index);
         this.setState({focused: index});
+        //console.log(index);
+
     }
 
     render () {
@@ -64,38 +69,71 @@ class MenuBar extends Component {
     }
 }
 
-<div id="id01"></div>
-
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var arrTags = JSON.parse(this.responseText);
-       displayArr(arrTags);
-    }
-};
-xhttp.open("GET", apiRoot + '/users/tag/' + Math.random() , true);
-xhttp.send();
-
-function displayArr(arr) {
-    var out = "";
-    var i;
-    for(i = 0; i < arr.length; i++) {
-        out += '<username: ' + arr[i].ind + ' >' +
-        arr[i].tag + '</a><br>';
-    }
-    document.getElementById("id01").innerHTML = out;
+class User extends Component {
+  render () {
+    return (
+      <div>{this.props.id}</div>
+    )
+  }
 }
 
-
-// class User extends Component{
+// class UserList extends Component {
+//   render () {
 //
+//   }
 // }
+
+function MakeList(index) {
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var arrTags = JSON.parse(this.responseText);
+         displayArr(arrTags, index);
+      }
+  };
+  xhttp.open("GET", apiRoot + '/users/tag/', true);
+  xhttp.send();
+
+  function displayArr(arr, index) {
+      var out = "";
+      var i;
+      for(i = 0; i < arr.length; i++) {
+        if (arr[i].tags.id.val == index.val){
+          out += '<username: ' + arr[i].id + ' >' +
+          arr[i].tag + '</a><br>';
+        }
+      }
+      var displayTag = "";
+      switch(index){
+        case 0:
+          displayTag = 'marketing';
+          break;
+        case 1:
+          displayTag = 'business';
+          break;
+        case 2:
+          displayTag = 'graphic-design';
+          break;
+        case 3:
+          displayTag = 'programming';
+          break;
+        case 4:
+          displayTag = 'engineering';
+          break;
+        case 5:
+          displayTag = 'investment';
+          break;
+      }
+      document.getElementById(displayTag).innerHTML = out;
+  }
+}
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <MenuBar items={['Home', 'Marketing', 'Business', 'Graphic Design',
+        <MenuBar items={[ 'Marketing', 'Management', 'Graphic Design',
           'Programming', 'Engineering', 'Investment']}/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
