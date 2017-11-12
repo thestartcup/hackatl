@@ -7,7 +7,8 @@
   // scheme is one of [tag, search, id]
   // name only relevant in tag and id schemes
   var serveUrlRoot = (path, query, response) => {
-    [base, scheme, name] = path.split('/').slice(2, 4)
+    var base, scheme, name
+    console.log([base, scheme, name] = path.split('/').slice(1, 3))
     var db = database.load(base)
     if (db) {
       if (scheme == 'tag') {
@@ -16,6 +17,8 @@
         db.serveSearch(query, response)
       } else if (scheme == 'id') {
         db.serveId(name, response)
+      } else if (scheme == 'all') {
+        db.serveAll(response)
       } else {
         db.serveError(response)
       }

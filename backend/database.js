@@ -1,14 +1,18 @@
 (function () {
   const querystring = require('querystring')
+  const fs = require('fs')
 
   var dbs = []
 
-  const load = (scheme) => {
-    var db = dbs.find(db => db.scheme == scheme)
+  const load = (dbName) => {
+    var db = dbs.find(db => db.name == dbName)
     if (typeof(db) !== 'undefined') {
       return db;
     } else {
-      db = new Database (scheme)
+      db = new Database (dbName)
+      if (dbName === 'users') {
+        db.items = JSON.parse(fs.readFileSync('./fake_users.json', 'utf8'))
+      }
       dbs.push(db)
       return db
     }
@@ -27,8 +31,12 @@
   }
 
   var Database = function Database (s) {
-    this.scheme = s
+    this.name = s
     this.items = []
+  }
+
+  Database.prototype.getAll = function () {
+    return this.items;
   }
 
   Database.prototype.getByTag = function (name) {
@@ -50,6 +58,11 @@
 
   Database.prototype.search = function (queryObj) {
     // TODO
+  }
+
+  Database.prototype.serveAll = function (response) {
+    var queryData = this.getAll()
+    response.json(queryData)
   }
 
   Database.prototype.serveTag = function (tagName, response) {

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "KarenMiller",
+    "name": "Karen Miller",
+    "tags": [
+      "graphic-design",
+      "marketing"
+    ],
+    "location": "Atlanta, Georgia"
+  },
+  {
+    "id": "BRuskin",
+    "name": "Bobby Ruskin",
+    "tags": [
+      "programming"
+    ],
+    "location": "Atlanta, Georgia"
+  },
+  {
+    "id": "Richard",
+    "name": "Richard Rayne",
+    "tags": [
+      "marketing"
+    ],
+    "location": "Atlanta, Georgia"
+  },
+  {
+    "id": "Stephen",
+    "name": "Stephen Miller",
+    "tags": [
+      "graphic-design"
+    ],
+    "location": "Augusta, Georgia"
+  },
+  {
+    "id": "Chris",
+    "name": "Christopher Bean",
+    "tags": [
+      "programming",
+      "business"
+    ],
+    "location": "Athens, Georgia"
+  },
+  {
+    "id": "Kate",
+    "name": "Kate Whitney",
+    "tags": [
+      "engineering",
+      "programming"
+    ],
+    "location": "Atlanta, Georgia"
+  },
+  {
+    "id": "Joseph.H",
+    "name": "Joseph wood",
+    "tags": [
+      "business",
+      "investment"
+    ],
+    "location": "Savannah, Georgia"
+  },
+  {
+    "id": "Brendon",
+    "name": "Brendon Li",
+    "tags": [
+      "programming",
+      "engineering",
+      "business"
+    ],
+    "location": "Decatur, Georgia"
+  },
+  {
+    "id": "Jessie",
+    "name": "Jessie Fields",
+    "tags": [
+      "investment"
+    ],
+    "location": "Atlanta, Georgia"
+  },
+  {
+    "id": "Stan",
+    "name": "Stanley Page",
+    "tags": [
+      "business",
+      "marketing"
+    ],
+    "location": "Atlanta, Georgia"
+  }
+]
