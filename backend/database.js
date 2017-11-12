@@ -61,7 +61,7 @@
   }
 
   Database.prototype.serveAll = function (response) {
-    var queryData = this.getAll(tagName)
+    var queryData = this.getAll()
     response.json(queryData)
   }
 
