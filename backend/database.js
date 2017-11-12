@@ -1,14 +1,18 @@
 (function () {
   const querystring = require('querystring')
+  const fs = require('fs')
 
   var dbs = []
 
-  const load = (scheme) => {
-    var db = dbs.find(db => db.scheme == scheme)
+  const load = (dbName) => {
+    var db = dbs.find(db => db.name == dbName)
     if (typeof(db) !== 'undefined') {
       return db;
     } else {
-      db = new Database (scheme)
+      db = new Database (dbName)
+      if (dbName === 'users') {
+        db.items = JSON.parse(fs.readFileSync('./fake_users.json', 'utf8'))
+      }
       dbs.push(db)
       return db
     }
@@ -27,7 +31,7 @@
   }
 
   var Database = function Database (s) {
-    this.scheme = s
+    this.name = s
     this.items = []
   }
 
