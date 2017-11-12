@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+var apiRoot = 'http://localhost:8080'
+
+var tagList = [
+{"tag": "Marketing", "ind": "0"},
+{"tag":"Business", "ind": "1"},
+{"tag":"Graphic Design", "ind": "2"},
+{"tag":"Programmer", "ind": "3"},
+{"tag":"Engineer", "ind": "4"},
+{"tag":"Investor", "ind": "5"}
+
+]
+
 class MenuBar extends Component {
 
     getInitialState () {
@@ -52,6 +64,33 @@ class MenuBar extends Component {
     }
 }
 
+<div id="id01"></div>
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var arrTags = JSON.parse(this.responseText);
+       displayArr(arrTags);
+    }
+};
+xhttp.open("GET", apiRoot + '/users/tag/' + Math.random() , true);
+xhttp.send();
+
+function displayArr(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<username: ' + arr[i].ind + ' >' +
+        arr[i].tag + '</a><br>';
+    }
+    document.getElementById("id01").innerHTML = out;
+}
+
+
+// class User extends Component{
+//
+// }
+
 class App extends Component {
   render() {
     return (
@@ -70,17 +109,5 @@ class App extends Component {
   }
 }
 
-//var React = require('react');
-//You need this npm package to do createReactClass
-//var createReactClass = require('create-react-class');
 
 export default App;
-
-
-
-// Render the menu component on the page, and pass an array with menu options
-
-// ReactDOM.render(
-//     <MenuExample items={ ['Home', 'Services', 'About', 'Contact us'] } />,
-//     document.getElementById('container')
-// );
