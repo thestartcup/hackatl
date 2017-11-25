@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FileReaderInput from 'react-file-reader-input';
 
 
 var apiRoot = 'http://localhost:8080'
@@ -14,6 +13,15 @@ var tagList = [
 {"tag":"engineering", "val": "5"},
 {"tag":"investment", "val": "6"}
 
+]
+
+var tags = [
+  'marketing',
+  'business',
+  'graphic-design',
+  'programming',
+  'engineering',
+  'investment'
 ]
 
 class MenuBar extends Component {
@@ -135,14 +143,6 @@ class App extends Component {
       <div className="App">
         <MenuBar items={[ 'Marketing', 'Management', 'Graphic Design',
           'Programming', 'Engineering', 'Investment']}/>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title"> The Start Cup </h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-
       </div>
     );
   }
